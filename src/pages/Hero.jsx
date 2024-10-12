@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import db from "../firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
 
-import Logo from "../assets/images/logo.png";
 import Arrow from "../assets/images/arrow.svg";
 import Image1 from "../assets/images/image1.png";
 import Image2 from "../assets/images/image2.png";
@@ -17,14 +18,9 @@ import Image10 from "../assets/images/image10.png";
 import Image11 from "../assets/images/image11.png";
 
 const Hero = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,192 +70,91 @@ const Hero = () => {
       window.history.pushState(null, null, `#${id}`);
     }
   };
-  
 
   return (
     <div className="bg-custom-radial text-white w-full overflow-x-hidden">
-      {/* Header/Navbar */}
-      <header
-        className={`fixed top-0 left-0 w-full bg-textColor bg-opacity-5 z-50 py-4 px-8 transition-shadow duration-300 ${
-          isScrolled ? "shadow-lg backdrop-filter backdrop-blur-lg" : ""
-        }`}
-      >
-        <nav className="max-w-6xl mx-auto flex justify-between items-center px-4">
-          {/* Logo */}
-          <div className="flex text-2xl font-bold">
-            <a href="#home" className="hover:text-blue-400">
-              <img src={Logo} alt="logo" className="w-16" />
-            </a>
-          </div>
-
-          {/* Desktop Nav Links */}
-          <ul className="hidden md:flex space-x-6 font-custom">
-            <li>
-              <button
-                onClick={() => scrollToSection("home")}
-                className="hover:text-blue-400"
-              >
-                Home
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection("about-us")}
-                className="hover:text-blue-400"
-              >
-                About Us
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection("team")}
-                className="hover:text-blue-400"
-              >
-                Team
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection("faq")}
-                className="hover:text-blue-400"
-              >
-                FAQ
-              </button>
-            </li>
-          </ul>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button
-              onClick={toggleSidebar}
-              className="text-white focus:outline-none"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
-            </button>
-          </div>
-        </nav>
-      </header>
-
-      {/* Sidebar for Mobile Menu */}
-      <div
-        className={`fixed top-0 right-0 w-64 h-full bg-[#232228] transition-transform transform ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        } md:hidden z-40`}
-      >
-        <button
-          onClick={toggleSidebar}
-          className="text-white absolute top-4 right-4"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M6 18L18 6M6 6l12 12"
-            ></path>
-          </svg>
-        </button>
-        <ul className="mt-20 space-y-6 text-center">
-          <li>
-            <button
-              onClick={() => scrollToSection("home")}
-              className="hover:text-blue-400"
-            >
-              Home
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => scrollToSection("about-us")}
-              className="hover:text-blue-400"
-            >
-              About Us
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => scrollToSection("team")}
-              className="hover:text-blue-400"
-            >
-              Team
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => scrollToSection("faq")}
-              className="hover:text-blue-400"
-            >
-              FAQ
-            </button>
-          </li>
-        </ul>
-      </div>
+      {/* Header */}
+      <Header />
 
       <main
         id="home"
-        className="h-screen flex flex-col items-center justify-center bg-custom-gradient relative pt-16 text-white"
+        className="h-screen mt-10 flex flex-col items-center justify-center bg-custom-gradient relative pt-16 text-white"
       >
-        {/* Left Side Images */}
-        <div className="hidden md:flex md:flex-col justify-center items-center absolute left-[10%] space-y-[-1%]">
-          <div className="w-24 h-24 md:w-52 md:h-52 flex justify-center items-center z-20">
+        {/* Left Side Images for Desktop */}
+        <div className="hidden md:flex md:flex-col justify-center items-center absolute left-[10%] -space-y-[1]">
+          <div className="w-24 h-24 md:w-48 md:h-48 flex justify-center items-center z-20">
             <img
               src={Image1}
               alt="SuiPunk 1"
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain animate-flag-flap"
             />
           </div>
           <div className="w-24 h-24 md:w-52 md:h-52 flex justify-center items-center z-10 -translate-x-20">
             <img
               src={Image2}
               alt="SuiPunk 2"
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain animate-flag-flap"
             />
           </div>
           <div className="w-24 h-24 md:w-52 md:h-52 flex justify-center items-center z-20">
             <img
               src={Image3}
               alt="SuiPunk 3"
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain animate-flag-flap"
+            />
+          </div>
+        </div>
+
+        {/* Mobile Images */}
+        <div className="md:hidden grid grid-cols-2 gap-4 justify-center items-center">
+          <div className="w-16 h-16 flex justify-center items-center">
+            <img
+              src={Image1}
+              alt="SuiPunk 1"
+              className="object-contain animate-flag-flap"
+            />
+          </div>
+          <div className="w-16 h-16 flex justify-center items-center">
+            <img
+              src={Image4}
+              alt="SuiPunk 4"
+              className="object-contain animate-flag-flap"
+            />
+          </div>
+          <div className="w-16 h-16 flex justify-center items-center">
+            <img
+              src={Image2}
+              alt="SuiPunk 2"
+              className="object-contain animate-flag-flap"
+            />
+          </div>
+          <div className="w-16 h-16 flex justify-center items-center">
+            <img
+              src={Image5}
+              alt="SuiPunk 5"
+              className="object-contain animate-flag-flap"
+            />
+          </div>
+          <div className="w-16 h-16 flex justify-center items-center">
+            <img
+              src={Image3}
+              alt="SuiPunk 3"
+              className="object-contain animate-flag-flap"
+            />
+          </div>
+          <div className="w-16 h-16 flex justify-center items-center">
+            <img
+              src={Image6}
+              alt="SuiPunk 6"
+              className="object-contain animate-flag-flap"
             />
           </div>
         </div>
 
         {/* Center Section */}
         <div className="flex flex-col items-center space-y-6 md:space-y-4">
-          {/* Mobile Images */}
-          <div className="flex flex-col items-center space-y-4 md:hidden">
-            <div className="w-16 h-16 flex justify-center items-center">
-              <img src={Image1} alt="SuiPunk 1" className="object-contain" />
-            </div>
-            <div className="w-16 h-16 flex justify-center items-center">
-              <img src={Image2} alt="SuiPunk 2" className="object-contain" />
-            </div>
-            <div className="w-16 h-16 flex justify-center items-center">
-              <img src={Image3} alt="SuiPunk 3" className="object-contain" />
-            </div>
-          </div>
-
           {/* Text */}
-          <div className="text-center space-y-6 z-10 max-w-2xl px-4">
+          <div className="text-center space-y-6 z-10 mt-3 max-w-2xl px-4">
             <span className="bg-[#232228] px-3 py-1 rounded-full text-xs md:text-xl">
               Join the Next Wave of Digital Expression!
             </span>
@@ -299,27 +194,27 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right Side Images */}
-        <div className="hidden md:flex md:flex-col justify-center items-center absolute right-[10%] space-y-[-2%]">
-          <div className="w-24 h-24 md:w-52 md:h-52 flex justify-center items-center z-10">
+        {/* Right Side Images for Desktop */}
+        <div className="hidden md:flex md:flex-col justify-center items-center absolute right-[10%] space-y-[1%]">
+          <div className="w-24 h-24 md:w-48 md:h-48 flex justify-center items-center z-10">
             <img
               src={Image4}
               alt="SuiPunk 4"
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain animate-flag-flap"
             />
           </div>
-          <div className="w-24 h-24 md:w-52 md:h-52 flex justify-center items-center z-20 translate-x-20">
+          <div className="w-24 h-24 md:w-48 md:h-48 flex justify-center items-center z-20 translate-x-20">
             <img
               src={Image5}
               alt="SuiPunk 5"
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain animate-flag-flap"
             />
           </div>
-          <div className="w-24 h-24 md:w-52 md:h-52 flex justify-center items-center z-10">
+          <div className="w-24 h-24 md:w-48 md:h-48 flex justify-center items-center z-10">
             <img
               src={Image6}
               alt="SuiPunk 6"
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain animate-flag-flap"
             />
           </div>
         </div>
@@ -428,47 +323,47 @@ const Hero = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 font-heading">
             SuiPunks Collections
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 mx-5 md:mx-0">
             {/* Collection Items */}
             <img
               src={Image9}
               alt="SuiPunk Collection 1"
-              className="w-full h-40 md:h-64 object-cover"
+              className="w-full h-40 md:h-64 object-cover animate-fade-in-opacity animate-float animate-delay-100"
             />
             <img
               src={Image11}
               alt="SuiPunk Collection 2"
-              className="w-full h-40 md:h-64 object-cover"
+              className="w-full h-40 md:h-64 object-cover animate-fade-in-opacity animate-float animate-delay-200"
             />
             <img
               src={Image6}
               alt="SuiPunk Collection 3"
-              className="w-full h-40 md:h-64 object-cover"
+              className="w-full h-40 md:h-64 object-cover animate-fade-in-opacity animate-float animate-delay-300"
             />
             <img
               src={Image10}
               alt="SuiPunk Collection 4"
-              className="w-full h-40 md:h-64 object-cover"
+              className="w-full h-40 md:h-64 object-cover animate-fade-in-opacity animate-float animate-delay-400"
             />
             <img
               src={Image1}
               alt="SuiPunk Collection 5"
-              className="w-full h-40 md:h-64 object-cover"
+              className="w-full h-40 md:h-64 object-cover animate-fade-in-opacity animate-float animate-delay-500"
             />
             <img
               src={Image2}
               alt="SuiPunk Collection 6"
-              className="w-full h-40 md:h-64 object-cover"
+              className="w-full h-40 md:h-64 object-cover animate-fade-in-opacity animate-float animate-delay-100"
             />
             <img
               src={Image3}
               alt="SuiPunk Collection 7"
-              className="w-full h-40 md:h-64 object-cover"
+              className="w-full h-40 md:h-64 object-cover animate-fade-in-opacity animate-float animate-delay-200"
             />
             <img
               src={Image4}
               alt="SuiPunk Collection 8"
-              className="w-full h-40 md:h-64 object-cover"
+              className="w-full h-40 md:h-64 object-cover animate-fade-in-opacity animate-float animate-delay-300"
             />
           </div>
         </div>
@@ -504,9 +399,7 @@ const Hero = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-10 text-center text-white font-custom">
-        <p>&copy; 2024 SuiPunks. All rights reserved.</p>
-      </footer>
+      <Footer />
     </div>
   );
 };

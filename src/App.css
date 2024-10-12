@@ -1,0 +1,52 @@
+/* Flag-flapping animation */
+@keyframes flag-flap {
+    0% {
+      transform: perspective(800px) rotateY(0deg) skewY(0deg);
+    }
+    25% {
+      transform: perspective(800px) rotateY(15deg) skewY(2deg);
+    }
+    50% {
+      transform: perspective(800px) rotateY(0deg) skewY(0deg);
+    }
+    75% {
+      transform: perspective(800px) rotateY(-15deg) skewY(-2deg);
+    }
+    100% {
+      transform: perspective(800px) rotateY(0deg) skewY(0deg);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-delay-100 {
+    animation-delay: 0.1s;
+  }
+  
+  .animate-delay-200 {
+    animation-delay: 0.2s;
+  }
+  
+  .animate-delay-300 {
+    animation-delay: 0.3s;
+  }
+  
+  .animate-delay-400 {
+    animation-delay: 0.4s;
+  }
+  
+  .animate-delay-500 {
+    animation-delay: 0.5s;
+  }
+  
