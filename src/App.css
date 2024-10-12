@@ -1,21 +1,25 @@
 /* Flag-flapping animation */
 @keyframes flag-flap {
-    0% {
-      transform: perspective(800px) rotateY(0deg) skewY(0deg);
-    }
-    25% {
-      transform: perspective(800px) rotateY(15deg) skewY(2deg);
-    }
-    50% {
-      transform: perspective(800px) rotateY(0deg) skewY(0deg);
-    }
-    75% {
-      transform: perspective(800px) rotateY(-15deg) skewY(-2deg);
-    }
-    100% {
-      transform: perspective(800px) rotateY(0deg) skewY(0deg);
-    }
+  0% {
+    transform: perspective(800px) rotateY(0deg) skewY(0deg);
   }
+  25% {
+    transform: perspective(800px) rotateY(15deg) skewY(2deg);
+  }
+  50% {
+    transform: perspective(800px) rotateY(0deg) skewY(0deg);
+  }
+  75% {
+    transform: perspective(800px) rotateY(-15deg) skewY(-2deg);
+  }
+  100% {
+    transform: perspective(800px) rotateY(0deg) skewY(0deg);
+  }
+}
+
+.animate-flag-flap {
+  animation: flag-flap 2s ease-in-out infinite;
+}
   
   @keyframes float {
     0%, 100% {
