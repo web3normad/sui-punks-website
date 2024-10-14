@@ -172,7 +172,7 @@ const Hero = () => {
           <div className="flex flex-col md:flex-row justify-center gap-4">
             {/* Telegram Button */}
             <a
-              href="https://t.me/suipunksnfts"
+              href="https://t.me/PUNKCTOONSUI"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -183,12 +183,12 @@ const Hero = () => {
 
             {/* Discord Button */}
             <a
-              href="https://discord.com/invite/yourDiscordLink"
+              href="https://x.com/PunkNFTsOnSui"
               target="_blank"
               rel="noopener noreferrer"
             >
               <button className="bg-white text-[#304FFF] px-4 py-2 text-xs md:text-xl w-36 md:w-52">
-                Join Discord
+                Follow us on X
               </button>
             </a>
           </div>
